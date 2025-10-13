@@ -1,3 +1,7 @@
+const num1 = null;
+const num2 = null;
+const operator = null;
+
 function add(x, y) {
     return x + y;
 };
