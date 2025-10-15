@@ -5,8 +5,13 @@
     align-items: center;
 }
 
+#display {
+    display: flex;
+}
+
 #btnContainer {
     display: flex;
+    border: 2px solid;
 }
 
 #numBtns {
@@ -16,12 +21,18 @@
 
 .num-btn {
     display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 80px;
     flex: 1 0 calc(100% / 3);
 }
 
 .op-btn {
     display: flex;
     flex-direction: column;
-    width: 30px;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
     flex: 1 0 auto;
 }
