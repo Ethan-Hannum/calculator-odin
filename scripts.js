@@ -6,9 +6,11 @@ numBtns.forEach((button) => {
     button.addEventListener("click", getClick);
 })
 
-let num1;
-let num2;
-let operator;
+const calculate = {
+    num1,
+    num2,
+    operator,
+}
 
 function add(x, y) {
     return x + y;
