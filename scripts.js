@@ -7,9 +7,9 @@ numBtns.forEach((button) => {
 })
 
 const calculate = {
-    num1,
-    num2,
-    operator,
+    num1: null,
+    num2: null,
+    operator: null,
 }
 
 function add(x, y) {
