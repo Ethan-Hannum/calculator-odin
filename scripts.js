@@ -4,6 +4,10 @@ const opBtns = document.querySelectorAll(".op-btn")
 
 numBtns.forEach((button) => {
     button.addEventListener("click", getClick);
+});
+
+opBtns.forEach((button) => {
+    button.addEventListener("click", getClick);
 })
 
 const calculate = {
@@ -41,7 +45,12 @@ function operate(op, num1, num2) {
 };
 
 function newText(text) {
-    display.textContent = `${display.textContent}${text}`;
+    const opsigns = "+-*/=";
+    if (opsigns.includes(text)) {
+        display.textContent = `${text}`
+    } else {
+        display.textContent = `${display.textContent}${text}`;
+    }
 };
 
 function getClick(e) {
