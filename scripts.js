@@ -45,11 +45,15 @@ function operate(op, num1, num2) {
 };
 
 function newText(text) {
-    const opsigns = "+-*/=";
-    if (opsigns.includes(text)) {
+    const opsigns = "+-*/   =";
+    if (opsigns.includes(display.textContent)) {
         display.textContent = `${text}`
     } else {
-        display.textContent = `${display.textContent}${text}`;
+        if (opsigns.includes(text)) {
+            display.textContent = `${text}`
+        } else {
+            display.textContent = `${display.textContent}${text}`;
+        }
     }
 };
 
