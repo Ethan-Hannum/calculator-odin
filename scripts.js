@@ -38,7 +38,11 @@ function operate(op, num1, num2) {
     }
 };
 
+function newText(text) {
+    display.textContent = `${text}`;
+};
+
 function getClick(e) {
     const recentClick = e.target.textContent;
-    display.textContent = `${recentClick}`;
+    newText(recentClick);
 }
