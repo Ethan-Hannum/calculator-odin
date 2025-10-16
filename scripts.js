@@ -1,3 +1,11 @@
+const display = document.querySelector("#display");
+const numBtns = document.querySelectorAll(".num-btn");
+const opBtns = document.querySelectorAll(".op-btn")
+
+numBtns.forEach((button) => {
+    button.addEventListener("click", getClick);
+})
+
 let num1;
 let num2;
 let operator;
@@ -29,3 +37,8 @@ function operate(op, num1, num2) {
         divide(num1, num2);
     }
 };
+
+function getClick(e) {
+    const recentClick = e.target.textContent;
+    display.textContent = `${recentClick}`;
+}
