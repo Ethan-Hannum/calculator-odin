@@ -41,10 +41,18 @@ function operate(op, num1, num2) {
 };
 
 function newText(text) {
-    display.textContent = `${text}`;
+    display.textContent = `${display.textContent}${text}`;
 };
 
 function getClick(e) {
     const recentClick = e.target.textContent;
-    newText(recentClick);
+    // If C is clicked, clear display and reset numbers to null
+    if (recentClick === "C") {
+        display.textContent = ``;
+        calculate.num1 = null;
+        calculate.num2 = null;
+        calculate.operator = null;
+    } else {
+        newText(recentClick);
+    }
 }
