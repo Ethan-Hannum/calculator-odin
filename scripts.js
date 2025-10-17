@@ -17,6 +17,7 @@ const calculate = {
 }
 
 function add(x, y) {
+    display.textContent = x + y
     return x + y;
 };
 
@@ -50,8 +51,8 @@ function newText(text) {
         display.textContent = `${text}`
     } else {
         if (opsigns.includes(text)) {
-            assignNum(display.textContent)
-            display.textContent = `${text}`
+            assignNum(display.textContent);
+            assignNum(text);
         } else {
             display.textContent = `${display.textContent}${text}`;
         }
@@ -74,10 +75,21 @@ function assignNum(displayText) {
             console.log(`num2 is ${calculate.num2}`);
         }
     }
+
+    if ((calculate.num1 !== null) && (calculate.num2 !== null)) {
+        operate(calculate.operator, calculate.num1, calculate.num2);
+    }
 }
 
 function getClick(e) {
     const recentClick = e.target.textContent;
+    const opsigns = "+-*/=";
+
+    if (opsigns.includes(recentClick)) {
+        const target = document.getElementById(`${e.target.id}`);
+        console.log(target);
+        target.classList.add("highlighted-op");
+    }
     // If C is clicked, clear display and reset numbers to null
     if (recentClick === "C") {
         display.textContent = ``;
