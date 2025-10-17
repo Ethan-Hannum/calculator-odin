@@ -45,17 +45,36 @@ function operate(op, num1, num2) {
 };
 
 function newText(text) {
-    const opsigns = "+-*/   =";
+    const opsigns = "+-*/=";
     if (opsigns.includes(display.textContent)) {
         display.textContent = `${text}`
     } else {
         if (opsigns.includes(text)) {
+            assignNum(display.textContent)
             display.textContent = `${text}`
         } else {
             display.textContent = `${display.textContent}${text}`;
         }
     }
 };
+
+function assignNum(displayText) {
+    const opsigns = "+-*/=";
+    if (opsigns.includes(displayText)) {
+        if (calculate.operator === null) {
+            calculate.operator = displayText;
+            console.log(`calculate.operator is ${calculate.operator}`);
+        }
+    } else {
+        if (calculate.num1 === null) {
+            calculate.num1 = +displayText;
+            console.log(`num1 is ${calculate.num1}`);
+        } else if (calculate.num2 === null) {
+            calculate.num2 = +displayText;
+            console.log(`num2 is ${calculate.num2}`);
+        }
+    }
+}
 
 function getClick(e) {
     const recentClick = e.target.textContent;
