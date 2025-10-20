@@ -71,7 +71,7 @@ function newText(text) {
         if (target.id === "equal") {
             display.textContent = "";
             target = "placeholder";
-            equal.removeEventListener(("click", getClick));
+            equal.removeEventListener("click", getClick);
             equal.disabled = true;
         }
         display.textContent = `${display.textContent}${text}`;
