@@ -9,8 +9,6 @@ numBtns.forEach((button) => {
     button.addEventListener("click", getClick);
 });
 
-
-
 const calculate = {
     num1: null,
     num2: null,
@@ -111,6 +109,7 @@ function assignNum(displayText) {
                     button.removeEventListener("click", getClick);
                 });
             }
+
             calculate["result"] = true;
             decimal.addEventListener("click", getClick);
             decimal.disabled = false;
@@ -172,6 +171,7 @@ function getClick(e) {
         console.log(target);
         if (target.id !== "equal") target.classList.add("highlighted-op");
     }
+
     // If C is clicked, clear display and reset numbers to null,
     // If any other button is clicked call newText(recentClick)
     if (recentClick === "C") {
