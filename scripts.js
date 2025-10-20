@@ -1,7 +1,8 @@
 const display = document.querySelector("#display");
 const numBtns = document.querySelectorAll(".num-btn");
-const opBtns = document.querySelectorAll(".op-btn")
-let target;
+const opBtns = document.querySelectorAll(".op-btn");
+const equal = document.getElementById("equal");
+let target = "placeholder";
 
 numBtns.forEach((button) => {
     button.addEventListener("click", getClick);
@@ -10,6 +11,8 @@ numBtns.forEach((button) => {
 opBtns.forEach((button) => {
     button.addEventListener("click", getClick);
 })
+
+equal.removeEventListener("click", getClick);
 
 const calculate = {
     num1: null,
@@ -65,7 +68,14 @@ function newText(text) {
         assignNum(display.textContent);
         assignNum(text);
     } else {
+        if (target.id === "equal") {
+            display.textContent = "";
+            target = "placeholder";
+            equal.removeEventListener(("click", getClick));
+            equal.disabled = true;
+        }
         display.textContent = `${display.textContent}${text}`;
+        // Readd event listener to opBtns so it can be clicked
         opBtns.forEach((button) => {
             button.addEventListener("click", getClick);
         })
@@ -81,9 +91,10 @@ function assignNum(displayText) {
         if (calculate.operator === null) {
             if (displayText !== "=") {
                 calculate.operator = displayText;
+                // if operator is assigned then remove event listener from opBtns
                 opBtns.forEach((button) => {
                     button.removeEventListener("click", getClick);
-                })
+                });
             }
             calculate["result"] = true;
             console.log(`calculate.operator is ${calculate.operator}`);
@@ -118,6 +129,7 @@ function assignNum(displayText) {
         as num1 when new operator is pressed. Unless used clicks new number */
         if (target.id === "equal") {
             calculate.num1 = null;
+            equal.removeEventListener("click", getClick);
         }
     }
 }
@@ -133,6 +145,7 @@ function getClick(e) {
             display.textContent = "";
         }
         delete calculate.result;
+        equal.disabled = false;
         target.classList.remove("highlighted-op");
     }
 
@@ -149,8 +162,11 @@ function getClick(e) {
         calculate.num1 = null;
         calculate.num2 = null;
         calculate.operator = null;
+        target = "placeholder";
         delete calculate.result;
         opBtns.forEach((button) => button.classList.remove("highlighted-op"));
+        equal.removeEventListener("click", getClick);
+        equal.disabled = true;
     } else {
         newText(recentClick);
     }
