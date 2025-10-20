@@ -8,11 +8,7 @@ numBtns.forEach((button) => {
     button.addEventListener("click", getClick);
 });
 
-opBtns.forEach((button) => {
-    button.addEventListener("click", getClick);
-})
 
-equal.removeEventListener("click", getClick);
 
 const calculate = {
     num1: null,
@@ -41,9 +37,19 @@ function multiply(x, y) {
 };
 
 function divide(numer, denom) {
-    calculate.num1 = numer / denom;
-    calculate.num2 = null;
-    return checkInt(calculate.num1);
+    if (denom === 0) {
+        opBtns.forEach((button) => {
+            button.removeEventListener("click", getClick);
+        })
+        calculate.num1 = null;
+        calculate.num2 = null;
+        calculate.operator = null;
+        return "Can't divide by 0!";
+    } else {
+        calculate.num1 = numer / denom;
+        calculate.num2 = null;
+        return checkInt(calculate.num1);
+    }
 };
 
 function checkInt(num) {
