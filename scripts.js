@@ -2,6 +2,7 @@ const display = document.querySelector("#display");
 const numBtns = document.querySelectorAll(".num-btn");
 const opBtns = document.querySelectorAll(".op-btn");
 const equal = document.getElementById("equal");
+const decimal = document.getElementById("decimal");
 let target = "placeholder";
 
 numBtns.forEach((button) => {
@@ -111,6 +112,8 @@ function assignNum(displayText) {
                 });
             }
             calculate["result"] = true;
+            decimal.addEventListener("click", getClick);
+            decimal.disabled = false;
             console.log(`calculate.operator is ${calculate.operator}`);
         }
     // when op-btn is pressed take the display.textContent and do following:
@@ -182,6 +185,12 @@ function getClick(e) {
         equal.removeEventListener("click", getClick);
         equal.disabled = true;
     } else {
-        newText(recentClick);
+        if (recentClick === ".") {
+            decimal.removeEventListener("click", getClick);
+            decimal.disabled = true;
+            newText(recentClick);
+        } else {
+            newText(recentClick);
+        }
     }
 }
