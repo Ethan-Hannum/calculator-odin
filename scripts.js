@@ -25,26 +25,34 @@ const calculate = {
 function add(x, y) { 
     calculate.num1 = x + y;
     calculate.num2 = null;
-    return x + y;
+    return checkInt(calculate.num1);
 };
 
 function subtract(x, y) {
     calculate.num1 = x - y;
     calculate.num2 = null;
-    return x - y;
+    return checkInt(calculate.num1);
 };
 
 function multiply(x, y) {
     calculate.num1 = x * y;
     calculate.num2 = null;
-    return x * y;
+    return checkInt(calculate.num1);
 };
 
 function divide(numer, denom) {
     calculate.num1 = numer / denom;
     calculate.num2 = null;
-    return numer / denom;
+    return checkInt(calculate.num1);
 };
+
+function checkInt(num) {
+    if (Number.isInteger(num) === false) {
+        return num = num.toFixed(2);
+    } else {
+        return num;
+    }
+}
 
 // Finds which operation to run then displays result.
 function operate(op, num1, num2) {
