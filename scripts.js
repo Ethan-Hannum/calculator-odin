@@ -66,6 +66,9 @@ function newText(text) {
         assignNum(text);
     } else {
         display.textContent = `${display.textContent}${text}`;
+        opBtns.forEach((button) => {
+            button.addEventListener("click", getClick);
+        })
     }
 }
 
@@ -78,6 +81,9 @@ function assignNum(displayText) {
         if (calculate.operator === null) {
             if (displayText !== "=") {
                 calculate.operator = displayText;
+                opBtns.forEach((button) => {
+                    button.removeEventListener("click", getClick);
+                })
             }
             calculate["result"] = true;
             console.log(`calculate.operator is ${calculate.operator}`);
