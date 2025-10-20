@@ -143,6 +143,8 @@ function getClick(e) {
         calculate.num1 = null;
         calculate.num2 = null;
         calculate.operator = null;
+        delete calculate.result;
+        opBtns.forEach((button) => button.classList.remove("highlighted-op"));
     } else {
         newText(recentClick);
     }
