@@ -150,6 +150,11 @@ function assignNum(displayText) {
     }
 }
 
+function removeChar() {
+    const slicedText = display.textContent.slice(0, display.textContent.length - 1);
+    display.textContent = slicedText;
+}
+
 function getClick(e) {
     const recentClick = e.target.textContent;
     const opsigns = "+-*/=";
@@ -189,6 +194,9 @@ function getClick(e) {
             decimal.removeEventListener("click", getClick);
             decimal.disabled = true;
             newText(recentClick);
+        } else if (recentClick === `\u2190`) {
+            console.log("backspace is being ran through getClick!")
+            removeChar();
         } else {
             newText(recentClick);
         }
